@@ -22,4 +22,14 @@ class Week1Tests {
     fun `test Cube Conundrum Part Two`() {
         assertEquals(83707, cubeConundrum2())
     }
+
+    @Test
+    fun `test Gear Ratios Part One`() {
+        assertEquals(549908, gearRatios1())
+    }
+
+    @Test
+    fun `test Gear Ratios Part Two`() {
+        assertEquals(0, gearRatios2())
+    }
 }

@@ -5,10 +5,10 @@ private val colors = mapOf("red" to 12, "green" to 13, "blue" to 14)
 fun cubeConundrum1(): Int {
     return readFile(FILE_NAME).sumOf {
         val id = it.substring(0, it.indexOf(":")).split(" ")[1].toInt()
-        val game = it.substring(it.indexOf(":") + 1)
+        val isValid = it.substring(it.indexOf(":") + 1)
             .trim()
             .split(";")
-        val isValid = game.flatMap { set -> set.split(",") }
+            .flatMap { set -> set.split(",") }
             .all { countAndColor ->
                 val (count, color) = countAndColor.trim().split(" ")
                 colors[color]!! >= count.toInt()
@@ -19,21 +19,20 @@ fun cubeConundrum1(): Int {
 }
 
 fun cubeConundrum2(): Int {
-    return readFile(FILE_NAME).sumOf {
-        val game = it.substring(it.indexOf(":") + 1)
+    return readFile(FILE_NAME).sumOf { game ->
+        game.substring(game.indexOf(":") + 1)
             .trim()
             .split(";")
-        val groupings = game.flatMap { set -> set.split(",") }
+            .flatMap { set -> set.split(",") }
             .map { countAndColor ->
                 val (count, color) = countAndColor.trim().split(" ")
                 color to count
             }
             .groupingBy { colorToCount -> colorToCount.first }
-
-        groupings.fold(0) { current, group ->
-            val count = group.second.toInt()
-            if (current == 0 || current < count) count else current
-        }
+            .fold(0) { current, group ->
+                val count = group.second.toInt()
+                if (current == 0 || current < count) count else current
+            }
             .values
             .reduce { current, next -> current * next }
     }
