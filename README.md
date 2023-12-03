@@ -7,3 +7,4 @@ If you are interested in trying out Kotlin for AoC this year or even next, check
 ## :spiral_calendar: Days
 
 1. :star::star: (12/01/2023) [Trebuchet?! Solution](src/main/kotlin/Day01.kt)
+2. :star::star: (12/03/2023) [Cube Conundrum Solution](src/main/kotlin/Day02.kt)
